@@ -102,9 +102,14 @@ output reg [9 : 0] rx_data
           rx_valid = 1;
           state_next = IDLE ;
           rx_data = data_reg ;
-          end 
           end
-          end  
+          else
+          begin
+          data_next = {data_reg[8 : 0], MOSI} ;
+          count_next = count_reg + 1;
+          end
+          end
+          end 
   READ_DATA : begin
               if(ss_n)
               state_next = IDLE ;
