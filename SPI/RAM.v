@@ -65,7 +65,8 @@ output reg [DATA_WIDTH - 3 :  0] dout
                        address_out = din[7 : 0] ;
                        tx_valid = 1'b0 ;
                        end
-    10'b11xx_xxxx_xx :  tx_valid = 1'b1;
+    10'b11xx_xxxx_xx : if(rx_valid)
+                       tx_valid = 1'b1;
     
     
     endcase
